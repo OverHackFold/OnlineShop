@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Amazon</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<th:block th:include="/_user_info"></th:block>
+<a th:href="@{/my_orders}">MY ORDERS</a>
+<br/>
+<hr/>
+
+<h1>Thank you! Your order is now on the way...</h1>
+<a th:href="@{/}">TO THE HOME PAGE</a>
+<th:block th:include="/_footer"></th:block>
+</body>
+</html>

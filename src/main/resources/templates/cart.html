@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Amazon</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<th:block th:include="/_user_info"></th:block>
+<a th:href="@{/my_orders}">MY ORDERS</a>
+<br/>
+<hr/>
+
+<h1>Here is your cart:</h1>
+<table>
+    <tr>
+        <td>Product</td>
+        <td>Quantity</td>
+        <td>Price($)</td>
+    </tr>
+    <tr th:each="item : ${order.orderDetails.orderItem}" th:if="${item.quantity > 0}">
+        <th th:text="${item.product.name.toUpperCase()}"></th>
+        <th th:text="${item.quantity}"></th>
+        <th th:text="${item.product.getPriceForDisplay()}"></th>
+    </tr>
+</table>
+<h1 th:text="'Total sum: ' + ${order.getSumForDisplay()} + '$'"></h1>
+<i th:text="${msg}" class="msg"></i><br>
+<a th:href="@{/shop/purchase}">PURCHASE</a>
+<a th:href="@{/shop}">CANCEL</a>
+<th:block th:include="/_footer"></th:block>
+</body>
+</html>

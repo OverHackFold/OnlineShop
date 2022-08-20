@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Amazon</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<th:block th:include="/_user_info"></th:block>
+<a th:href="@{/shop}">BACK TO THE SHOP</a>
+<br/>
+<hr/>
+
+<h1>Your orders:</h1>
+<p th:if="${orders.isEmpty()}">No orders yet</p>
+<div th:each="order : ${orders}">
+    <p th:text="'ID: ' + ${order.id}" class="id-text"></p>
+    <table>
+        <tr>
+            <td>Product</td>
+            <td>Quantity</td>
+            <td>Price($)</td>
+        </tr>
+        <tr th:each="item : ${order.orderDetails.orderItems}" th:if="${item.quantity > 0}">
+            <th th:text="${item.product.name.toUpperCase()}"></th>
+            <th th:text="${item.quantity}"></th>
+            <th th:text="${item.product.getPriceForDisplay()}"></th>
+        </tr>
+    </table>
+    <p th:text="'Created at: ' + ${order.getDateTimeForDisplay()}" class="order-property"></p>
+    <p th:text="'Total sum: ' + ${order.getSumForDisplay()} + '$'" class="order-property"></p>
+    <br/>
+</div>
+<th:block th:include="/_footer"></th:block>
+</body>
+</html>
