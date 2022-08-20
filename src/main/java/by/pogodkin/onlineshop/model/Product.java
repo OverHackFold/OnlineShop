@@ -16,9 +16,13 @@ import javax.persistence.*;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @Column(name = "id", nullable = false)
+    private Long id;
+    @Column(name = "name", nullable = false)
     private String name;
+    @Column(name = "price", nullable = false)
     private double price;
+    @Column(name = "in_stock", nullable = false)
     private int inStock;
 
 

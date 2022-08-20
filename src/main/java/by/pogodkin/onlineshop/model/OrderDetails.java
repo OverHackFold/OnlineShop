@@ -16,7 +16,7 @@ import java.util.List;
 public class OrderDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     @OneToOne
     @JoinColumn(name = "order_id")

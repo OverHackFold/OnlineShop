@@ -21,11 +21,12 @@ import java.util.List;
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-
+    private Long id;
+    @Column(name = "username", nullable = false)
     private String username;
+    @Column(name = "password", nullable = false)
     private String password;
-
+    @Column(name = "money_balance", nullable = false)
     private double moneyBalance;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

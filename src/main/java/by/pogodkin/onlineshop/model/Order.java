@@ -16,8 +16,10 @@ import java.util.Locale;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
+    @Column(name = "sum", nullable = false)
     private double sum;
+    @Column(name = "date", nullable = false)
     private LocalDateTime dateTime;
 
     @ManyToOne(fetch = FetchType.LAZY)

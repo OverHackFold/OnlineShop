@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "order_details_id")
@@ -22,7 +22,7 @@ public class OrderItem {
 
     @OneToOne
     private Product product;
-
+    @Column(name = "quantity", nullable = false)
     private int quantity;
 
     public OrderItem(OrderDetails orderDetails, Product product, int quantity) {
